@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop up Box</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #main {
+            width: 100%;
+            height: 100vh;
+            background: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .box {
+            width: 25rem;
+            height: 22vh;
+            background: #fff;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            display: none;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: .5rem 1rem;
+            font-size: 2rem;
+            border-bottom: 1px solid #000;
+        }
+
+        .title h3,
+        span {
+            cursor: pointer;
+        }
+
+        .txt {
+            padding: 0 1rem;
+        }
+
+        .show {
+            display: flex;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .popup {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            cursor: pointer;
+        }
+
+        .popup span {
+            width: .5rem;
+            height: .8vh;
+            background: #000;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <div class="box">
+            <div class="title">
+                <h3>Pop Up</h3>
+                <span>&times;</span>
+            </div>
+            <div class="txt">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Placeat excepturi necessitatibus tempore in sint
+                    velit vitae dolor? Voluptatem, atque? Ipsum nemo consequuntur,
+                    corrupti explicabo amet aspernatur dicta sequi eaque quo. Aut
+                    veniam esse dolorum fugit ipsam nobis possimus dicta ducimus.
+                </p>
+            </div>
+        </div>
+        <div class="popup">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script>
+
+        let span = document.querySelector('span');
+        let box = document.querySelector('.box');
+        let popup = document.querySelector('.popup');
+
+        popup.addEventListener('click', function () {
+            box.classList.add('show');
+        })
+        span.addEventListener('click', function () {
+            box.classList.add('hide');
+        })
+
+    </script>
+</body>
+
+</html>

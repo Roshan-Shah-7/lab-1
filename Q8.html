@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            border: 2px solid #000;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .input_box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .input_box input {
+            height: 3.5vh;
+            padding-left: 1rem;
+        }
+
+        input::placeholder {
+            position: absolute;
+            margin-left: 3rem;
+        }
+
+        .operators {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .operators input {
+            background-color: darkblue;
+            color: aliceblue;
+            width: 3.5rem;
+            height: 2.5vh;
+        }
+
+        .result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .result p span {
+            border: 1px solid #000;
+            padding: .4rem 9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <div class="input_box">
+            <h3>Basic Arthmetic Functions</h3>
+            <div class="box">
+                <input type="text" id="firstnumber" placeholder="Operand">
+                <input type="text" id="secondnumber" placeholder="Operand">
+            </div>
+        </div>
+        <div class="operators">
+            <input type="button" onclick="addby()" value="ADD">
+            <input type="button" onclick="subtractby()" value="SUB">
+            <input type="button" onclick="multyby()" value="MUL">
+            <input type="button" onclick="divideby()" value="DIV">
+            <input type="button" onclick="modeby()" value="MOD">
+        </div>
+        <div class="result">
+            <!-- <h3>Result</h3> -->
+            <p>
+                <span id="result">
+                   Result
+                </span>
+            </p>
+        </div>
+    </form>
+
+    <script>
+        function addby() {
+            var num1 = document.getElementById("firstnumber").value;
+            var num2 = document.getElementById("secondnumber").value;
+
+            document.getElementById('result').innerHTML = Number(num1) + Number(num2);
+        }
+        function subtractby() {
+            var num1 = document.getElementById("firstnumber").value;
+            var num2 = document.getElementById("secondnumber").value;
+
+            document.getElementById('result').innerHTML = Number(num1) - Number(num2);
+        }
+        function multyby() {
+            var num1 = document.getElementById("firstnumber").value;
+            var num2 = document.getElementById("secondnumber").value;
+
+            document.getElementById('result').innerHTML = Number(num1) * Number(num2);
+        }
+        function divideby() {
+            var num1 = document.getElementById("firstnumber").value;
+            var num2 = document.getElementById("secondnumber").value;
+
+            document.getElementById('result').innerHTML = Number(num1) / Number(num2);
+        }
+        function modeby() {
+            var num1 = document.getElementById("firstnumber").value;
+            var num2 = document.getElementById("secondnumber").value;
+
+            document.getElementById('result').innerHTML = Number(num1) %  Number(num2);
+        }
+    </script>
+</body>
+
+</html>
