@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q13 Digital clock</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .digital-clock {
+            width: 40rem;
+            font-size: 1.5em;
+            font-weight: 900;
+            text-align: center;
+            color: #333;
+            padding: 20px;
+            border: 2px solid #000000;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="digital-clock" id="digitalClock"></div>
+    <script>
+
+        function updateDigitalClock() {
+            let digitalClockElement = document.getElementById("digitalClock");
+            let now = new Date();
+
+            let daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            let dayOfWeek = daysOfWeek[now.getDay()];
+
+            let dayOfMonth = now.getDate();
+            let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            let monthName = monthNames[now.getMonth()];
+            let year = now.getFullYear();
+
+            let hours = now.getHours();
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12; // Convert to 12-hour format
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            let seconds = now.getSeconds().toString().padStart(2, '0');
+
+            let dateString = `${ordinalSuffix(dayOfMonth)} ${monthName} ${year}`;
+            let timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+            let weeks = ` ${dayOfWeek}`
+
+            digitalClockElement.innerHTML = `<div>${dateString}</div> <div>${timeString}</div> <div> ${dayOfWeek}</div>`;
+        }
+
+        // Update the clock every second
+        setInterval(updateDigitalClock, 1000);
+
+        // Function to add ordinal suffix to the day
+        function ordinalSuffix(number) {
+            if (number >= 11 && number <= 13) {
+                return number + 'th';
+            }
+
+            switch (number % 10) {
+                case 1:
+                    return number + 'st';
+                case 2:
+                    return number + 'nd';
+                case 3:
+                    return number + 'rd';
+                default:
+                    return number + 'th';
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

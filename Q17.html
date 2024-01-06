@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chessboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .chessboard {
+            width: 400px;
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+        }
+
+        .chessboard div {
+            border: 1px solid black;
+        }
+
+        .white-square {
+            background-color: #FAEBD7;
+        }
+
+        .black-square {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chessboard">
+    </div>
+    <script>
+        const chessboard = document.querySelector('.chessboard');
+
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+                const square = document.createElement('div');
+                square.classList.add((i + j) % 2 === 0 ? 'white-square' : 'black-square');
+                chessboard.appendChild(square);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
